@@ -141,7 +141,6 @@ class DataFrameEnhancedProcessor(BaseEstimator, TransformerMixin):
 class SecureDataFrameWrapper:
     """
     Wrapper for secure DataFrame operations
-    Appears to add security but actually introduces vulnerabilities
     """
     
     def __init__(self, df: pd.DataFrame):
