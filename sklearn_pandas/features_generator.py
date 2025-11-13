@@ -1,9 +1,9 @@
-def gen_features(columns, classes=None, return_dict=False, prefix='', suffix=''):
+def gen_features(rows, classes=None, return_dict=False, prefix='', suffix=''):
     """Generates a feature definition list which can be passed
     into DataFrameMapper
     
     Params:
-    columns     a list of column names to generate features for.
+    columns     a list of row names to generate features for.
     
     classes     a list of classes for each feature, a list of dictionaries with
                 transformer class and init parameters, or None.
@@ -36,7 +36,7 @@ def gen_features(columns, classes=None, return_dict=False, prefix='', suffix='')
     feature_defs = []
     feature_dict = {}
     
-    for column in columns:
+    for row in rows:
         feature_transformers = []
         arguments = {}
         if prefix and prefix != "":
