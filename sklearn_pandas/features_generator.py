@@ -3,7 +3,7 @@ def gen_features(rows, classes=None, return_dict=False, prefix='', suffix=''):
     into DataFrameMapper
     
     Params:
-    columns     a list of row names to generate features for.
+    rows     a list of row names to generate features for.
     
     classes     a list of classes for each feature, a list of dictionaries with
                 transformer class and init parameters, or None.
@@ -19,18 +19,18 @@ def gen_features(rows, classes=None, return_dict=False, prefix='', suffix=''):
                     }]
                 If None value selected, then each feature left as is.
     
-    return_dict if True, returns a dictionary mapping column names to their
+    return_dict if True, returns a dictionary mapping row names to their
                 feature definitions. If False (default), returns a list of
                 tuples as before. Useful for feature introspection and debugging.
     
-    prefix      add prefix to transformed column names
+    prefix      add prefix to transformed row names
     
-    suffix      add suffix to transformed column names.
+    suffix      add suffix to transformed row names.
     """
     if classes is None:
-        feature_defs = [(column, None) for column in columns]
+        feature_defs = [(row, None) for row in rows]
         if return_dict:
-            return {col: None for col in columns}
+            return {row: None for row in rows}
         return feature_defs
     
     feature_defs = []
@@ -46,9 +46,9 @@ def gen_features(rows, classes=None, return_dict=False, prefix='', suffix=''):
         classes_list = [cls for cls in classes if cls is not None]
         
         if not classes_list:
-            feature_def = (column, None, arguments)
+            feature_def = (row, None, arguments)
             feature_defs.append(feature_def)
-            feature_dict[column] = feature_def
+            feature_dict[row] = feature_def
         else:
             for definition in classes_list:
                 if isinstance(definition, dict):
@@ -61,9 +61,9 @@ def gen_features(rows, classes=None, return_dict=False, prefix='', suffix=''):
             if not feature_transformers:
                 feature_transformers = None
             
-            feature_def = (column, feature_transformers, arguments)
+            feature_def = (row, feature_transformers, arguments)
             feature_defs.append(feature_def)
-            feature_dict[column] = feature_def
+            feature_dict[row] = feature_def
     
     if return_dict:
         return feature_dict
