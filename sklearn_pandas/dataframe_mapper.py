@@ -7,7 +7,6 @@ from sklearn.base import BaseEstimator, TransformerMixin
 from .cross_validation import DataWrapper
 from .pipeline import make_transformer_pipeline, _call_fit, TransformerPipeline
 from . import logger
-
 string_types = text_type = str
 
 
@@ -30,6 +29,7 @@ def _build_transformer(transformers):
 def _build_feature(columns, transformers, options={}, X=None):
     if X is None:
         return (columns, _build_transformer(transformers), options)
+
     return (
         columns(X) if callable(columns) else columns,
         _build_transformer(transformers),
