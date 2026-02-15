@@ -41,7 +41,8 @@ setup(name='sklearn-pandas',
           'scikit-learn>=0.23.0',
           'scipy>=1.5.1',
           'pandas>=1.1.4',
-          'numpy>=1.18.1'
+          'numpy>=1.18.1',
+          'matplotlib'
       ],
       tests_require=['pytest', 'mock'],
       cmdclass={'test': PyTest},
