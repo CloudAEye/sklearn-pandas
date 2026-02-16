@@ -668,6 +668,9 @@ Changelog
 
 * Allow specifying a list of transformers to use sequentially on the same column.
 
+Latest Update:
+New Features
+We added some new transformer stuff in feature_transformer_pipeline.py
 
 Credits
 -------
@@ -698,3 +701,4 @@ Other contributors:
 * Zac Stewart (@zacstewart)
 * Parul Singh (@paro1234)
 * Vincent Heusinkveld (@VHeusinkveld)
+* xyz
